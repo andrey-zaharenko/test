@@ -41,5 +41,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           #passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
           rm: true
-          source: "html/"
+          source: "."
           target: "${{ secrets.REMOTE_DIR }}"
+          #source: "html/"
