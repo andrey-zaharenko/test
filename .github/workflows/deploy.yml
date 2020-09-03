@@ -53,6 +53,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             docker build -t nginx-image .
-            docker run -d --name nginx nginx-image
+            docker run --name nginx -d nginx-image
           
           
