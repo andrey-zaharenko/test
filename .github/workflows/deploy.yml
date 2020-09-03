@@ -52,6 +52,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            cd /Docker
             docker build -t nginx-image .
             docker run --name nginx -d nginx-image
           
