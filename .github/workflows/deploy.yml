@@ -43,8 +43,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /Docker
-            docker-compose up -d
-            #docker stop nginx
-            #docker rm nginx
-            #docker build -t nginx-image .
+			docker stop nginx
+            docker rm nginx
+			#docker build -t nginx-image .
             #docker run --name nginx -d -p 80:80 -p 443:443 nginx-image
+            docker-compose up -d
+            
