@@ -47,5 +47,4 @@ jobs:
             #docker rm nginx
             #docker build -t nginx-image .
             #docker run --name nginx -d -p 80:80 -p 443:443 nginx-image
-			docker-compose up -d		
-          
+	    docker-compose up -d
