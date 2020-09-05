@@ -5,13 +5,13 @@ services:
         restart: always
         volumes:
             - ./public:/var/www/html
-			- ./nginx/log:/var/log/nginx
+            - ./nginx/log:/var/log/nginx
             - ./conf.d:/etc/nginx/conf.d
             - ./certbot/ssl:/etc/nginx/ssl
             - ./certbot/data:/var/www/certbot
         ports:
-			- 80:80
-			- 443:443
+            - 80:80
+            - 443:443
 
     certbot:
         image: certbot/certbot:latest
