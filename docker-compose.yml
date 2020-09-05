@@ -1,22 +1,33 @@
-version: "3.7"
+version: '2'
 services:
-    web: 
-        image: nginx:latest
-        restart: always
-        volumes:
-            - ./public:/var/www/html
-            - ./nginx/log:/var/log/nginx
-            - ./conf.d:/etc/nginx/conf.d
-            - ./certbot/ssl:/etc/nginx/ssl
-            - ./certbot/data:/var/www/certbot
-        ports:
-            - 80:80
-            - 443:443
 
-    certbot:
-        image: certbot/certbot:latest
-        command: certonly --webroot --webroot-path=/var/www/certbot --email itbezproblem@gmail.com --agree-tos --no-eff-email -d test-docker.scenario-projects.com
+    nginx:
+        build: .
+        image: umputun/nginx-le:latest
+        hostname: nginx
+        restart: always
+        container_name: nginx
+
+        logging:
+          driver: json-file
+          options:
+              max-size: "10m"
+              max-file: "5"
+
         volumes:
-            - ./certbot/ssl:/etc/letsencrypt
-            - ./certbot/logs:/var/log/letsencrypt
-            - ./certbot/data:/var/www/certbot
+            - ./etc/ssl:/etc/nginx/ssl
+            - ./etc/service-example.conf:/etc/nginx/service.conf
+            - ./html:/var/www/html
+            # - ./etc/service-example-2.conf:/etc/nginx/service2.conf # more services, should be service*.conf
+        ports:
+            - "80:80"
+            - "443:443"
+
+        environment:
+            - TZ=Europe/Kiev
+            - LETSENCRYPT=true
+            - LE_EMAIL=itbezproblem@gmail.com
+            - LE_FQDN=test-docker.scenario-projects.com
+            #- SSL_CERT=le-crt.pem
+            #- SSL_KEY=le-key.pem
+            #- SSL_CHAIN_CERT=le-chain-crt.pem
