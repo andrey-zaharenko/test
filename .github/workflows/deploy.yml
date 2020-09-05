@@ -45,4 +45,4 @@ jobs:
             cd /Docker
             docker stop nginx
             docker rm nginx
-            docker-compose up -d
+            docker-compose up --build -d
