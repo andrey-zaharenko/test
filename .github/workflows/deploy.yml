@@ -42,6 +42,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            docker system prune -a
             cd /Docker
             docker-compose down
             docker-compose build
