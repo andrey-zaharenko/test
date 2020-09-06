@@ -44,6 +44,4 @@ jobs:
           script: |
             cd /Docker
             docker-compose down
-            docker system prune -a
-            docker-compose build
             docker-compose up -d --remove-orphans
