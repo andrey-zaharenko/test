@@ -4,7 +4,7 @@ services:
     nginx:
         build: .
         #image: umputun/nginx-le:latest
-        image: azaharenko/test:latest
+        image: azaharenko/test:Develop
         restart: always
         container_name: nginx
 
