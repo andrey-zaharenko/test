@@ -3,8 +3,8 @@ services:
 
     nginx:
         build: .
-        image: umputun/nginx-le:latest
-        hostname: nginx
+        #image: umputun/nginx-le:latest
+        image: azaharenko/test:latest
         restart: always
         container_name: nginx
 
